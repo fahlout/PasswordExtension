@@ -41,6 +41,10 @@ In order for your app to be able to fully integrate with this extension the foll
 
 You're now ready to use this library to let users fill in credentials, save credentials and change passwords in their password manager vault.
 
+Just add a button with an appropriate icon (i.e. the 1Password icon) to your apps login screen, etc. and show it based on the isAvailable function in PasswordExtension. This button should now be used to invoke the desired PasswordExtension feature.
+
+
+
 ***NOTE: Not every field in PasswordExtensionLoginDetails may be supported in every password manager. PasswordExtensionGeneratedPasswordOptions also may or may not be supported depending on the password manager.***
 
 ## Example Code
