@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.description      = 'PasswordExtension lets you give users access to their third party password manager conforming the PasswordExtension scheme (i.e. 1Password, LastPass) to fill in their login credentials from their vault, add credentials to their vault, and change their password in their vault for any given url.'
 
-  s.homepage         = 'https://github.com/Niklas Fahl/PasswordExtension'
+  s.homepage         = 'https://github.com/fahlout/PasswordExtension'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Niklas Fahl' => 'niklas.fahl@me.com' }
