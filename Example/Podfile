@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PasswordExtension_Example' do
+  pod 'PasswordExtension', :path => '../'
+
+  target 'PasswordExtension_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

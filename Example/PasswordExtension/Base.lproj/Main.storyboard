@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VkF-gS-lYW">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ys4-Qa-Axz">
+            <objects>
+                <viewController id="VkF-gS-lYW" customClass="ViewController" customModule="PasswordExtension_Example" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6uo-wd-7H8"/>
+                        <viewControllerLayoutGuide type="bottom" id="otU-ms-j0W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1pL-nI-gAl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vJ-2M-6I0">
+                                <rect key="frame" x="140" y="60" width="95" height="30"/>
+                                <state key="normal" title="Get Password"/>
+                                <connections>
+                                    <action selector="didTapGetPassword:" destination="VkF-gS-lYW" eventType="touchUpInside" id="WGg-3k-p92"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezj-rI-YTa">
+                                <rect key="frame" x="131" y="131" width="113" height="30"/>
+                                <state key="normal" title="Store New Login"/>
+                                <connections>
+                                    <action selector="didTapSaveNewLogin:" destination="VkF-gS-lYW" eventType="touchUpInside" id="XPM-DR-Tfx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ezj-rI-YTa" firstAttribute="centerX" secondItem="1pL-nI-gAl" secondAttribute="centerX" id="9SE-VY-jxU"/>
+                            <constraint firstItem="ezj-rI-YTa" firstAttribute="top" secondItem="5vJ-2M-6I0" secondAttribute="bottom" constant="41" id="QBS-X3-h97"/>
+                            <constraint firstItem="5vJ-2M-6I0" firstAttribute="top" secondItem="6uo-wd-7H8" secondAttribute="bottom" constant="40" id="R20-KX-CfX"/>
+                            <constraint firstItem="5vJ-2M-6I0" firstAttribute="centerX" secondItem="1pL-nI-gAl" secondAttribute="centerX" id="aA0-EB-Q3T"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ORy-eb-3h2" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
