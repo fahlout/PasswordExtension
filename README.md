@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/PasswordExtension.svg?style=flat)](http://cocoapods.org/pods/PasswordExtension)
 [![Platform](https://img.shields.io/cocoapods/p/PasswordExtension.svg?style=flat)](http://cocoapods.org/pods/PasswordExtension)
 
-Reworked version of [one-password-app-extension by AgileBits](https://github.com/agilebits/onepassword-app-extension) in Swift 4
+Rewritten version of [one-password-app-extension by AgileBits](https://github.com/agilebits/onepassword-app-extension) in Swift 4
 
 ## Example
 
