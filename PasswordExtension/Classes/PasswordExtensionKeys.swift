@@ -8,6 +8,10 @@
 import Foundation
 
 // MARK: - Login Keys
+
+/**
+ Keys to retrieve login details from extension response or to set login details in a dictionary.
+ */
 public enum PasswordExtensionLogin: String {
     case urlString = "url_string"
     case username = "username"
@@ -26,6 +30,10 @@ public enum PasswordExtensionLogin: String {
 }
 
 // MARK: - Generated Password Option Keys
+
+/**
+ Keys to retrieve or set password generation options in a dictionary.
+ */
 public enum PasswordExtensionGeneratedPassword: String {
     case minLength = "password_min_length"
     case maxLength = "password_max_length"

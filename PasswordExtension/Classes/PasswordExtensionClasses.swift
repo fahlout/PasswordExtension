@@ -9,7 +9,11 @@ import Foundation
 
 // MARK: - Login Details
 
-// Note: Not all fields are supported by every password manager
+/**
+ Login details to be used to as result for credential retrieval, to store new credentials, and to change credentials.
+ 
+ Note: Not all fields are supported by every password manager
+ */
 public struct PasswordExtensionLoginDetails {
     public var urlString: String
     public var username: String
@@ -78,6 +82,9 @@ public struct PasswordExtensionLoginDetails {
 
 // MARK: - Generated Password Options
 
+/**
+ Options to be passed to password manager for password generation.
+ */
 public struct PasswordExtensionGeneratedPasswordOptions {
     public var minLength: Int
     public var maxLength: Int
