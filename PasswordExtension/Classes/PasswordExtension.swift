@@ -115,7 +115,7 @@ public class PasswordExtension {
      a login, it is stored into a dictionary and given to your completion handler. Use the password extension keys above to
      extract the needed information and update your UI.
      */
-    public func findLogin(for urlString: String, viewController: UIViewController, sender: Any?, responseType: PasswordExtensionResponseType = .object, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    public func findLogin(for urlString: String, viewController: UIViewController, sender: Any?, completion: @escaping (PasswordExtensionResponse) -> Void) {
         if !isSystemAppExtensionAPIAvailable() {
             print("Failed to find login, system API is not available")
             self.callOnMainThread { [unowned self] () in
@@ -126,45 +126,9 @@ public class PasswordExtension {
         if #available(iOS 8, *) {
             // API available, find login
             let item = [PasswordExtensionLogin.urlString.key(): urlString]
-            guard let activityVC = activityViewController(for: item, sender: sender, typeIdentifier: PasswordExtensionActions.findLogin.rawValue, completion: { [unowned self] (activityType, completed, items, error) in
-                if let error = error {
-                    print("Failed to findLogin: \(error)")
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: error)))
-                    }
-                    return
-                }
-                
-                guard let items = items else {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: nil)))
-                    }
-                    return
-                }
-                
-                if items.count == 0 {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.extensionCancelledByUserError()))
-                    }
-                    return
-                }
-                
-                guard let firstItem = items[0] as? NSExtensionItem else {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: nil)))
-                    }
-                    return
-                }
-                self.processExtensionItem(item: firstItem, responseType: responseType, completion: completion)
-            })
-            else {
-                print("Failed to find login, system API is not available")
-                self.callOnMainThread { [unowned self] () in
-                    completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
-                }
-                return
-            }
-            viewController.present(activityVC, animated: true, completion: nil)
+            
+            
+            presentActivityViewController(for: item, viewController: viewController, sender: sender, typeIdentifier: PasswordExtensionActions.findLogin.path(), completion: completion)
         }
         else {
             print("Failed to find login, system API is not available")
@@ -182,7 +146,7 @@ public class PasswordExtension {
      Use the password extension keys above to extract the needed information and update your UI. For example, updating the UI with the
      newly generated password lets the user know their action was successful.
      */
-    public func storeLogin(for loginDetails: PasswordExtensionLoginDetails, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions?, viewController: UIViewController, sender: Any?, responseType: PasswordExtensionResponseType = .object, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    public func storeLogin(for loginDetails: PasswordExtensionLoginDetails, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions?, viewController: UIViewController, sender: Any?, completion: @escaping (PasswordExtensionResponse) -> Void) {
         if !isSystemAppExtensionAPIAvailable() {
             print("Failed to find login, system API is not available")
             self.callOnMainThread { [unowned self] () in
@@ -191,50 +155,12 @@ public class PasswordExtension {
         }
         
         if #available(iOS 8, *) {
-            var loginAttributes: [String: Any] = loginDetails.dictionaryRepresentation()
+            var item: [String: Any] = loginDetails.dictionaryRepresentation()
             if let generatedPasswordOptions = generatedPasswordOptions?.dictionaryRepresentation() {
-                loginAttributes[PasswordExtensionLogin.generatedPasswordOptions.key()] = generatedPasswordOptions
+                item[PasswordExtensionLogin.generatedPasswordOptions.key()] = generatedPasswordOptions
             }
             
-            guard let activityVC = activityViewController(for: loginAttributes, sender: sender, typeIdentifier: PasswordExtensionActions.saveLogin.path(), completion: { [unowned self] (activityType, completed, items, error) in
-                if let error = error {
-                    print("Failed to storeLogin: \(error)")
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: error)))
-                    }
-                    return
-                }
-                
-                guard let items = items else {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: nil)))
-                    }
-                    return
-                }
-                
-                if items.count == 0 {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.extensionCancelledByUserError()))
-                    }
-                    return
-                }
-                
-                guard let firstItem = items[0] as? NSExtensionItem else {
-                    self.callOnMainThread { [unowned self] () in
-                        completion(.error(error: self.failedToContactExtensionError(with: nil)))
-                    }
-                    return
-                }
-                self.processExtensionItem(item: firstItem, responseType: responseType, completion: completion)
-            })
-            else {
-                print("Failed to find login, system API is not available")
-                self.callOnMainThread { [unowned self] () in
-                    completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
-                }
-                return
-            }
-            viewController.present(activityVC, animated: true, completion: nil)
+            presentActivityViewController(for: item, viewController: viewController, sender: sender, typeIdentifier: PasswordExtensionActions.saveLogin.path(), completion: completion)
         }
         else {
             print("Failed to find login, system API is not available")
@@ -251,8 +177,28 @@ public class PasswordExtension {
      Use the password extension keys above to extract the needed information and update your UI. For example, updating the UI with the
      newly generated password lets the user know their action was successful.
      */
-    public func changePasswordForLogin(for urlString: String, loginDetails: PasswordExtensionLoginDetails, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions, viewController: UIViewController, sender: Any?, responseType: PasswordExtensionResponseType = .object, completion: (PasswordExtensionResponse) -> Void) {
+    public func changePasswordForLogin(for loginDetails: PasswordExtensionLoginDetails, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions?, viewController: UIViewController, sender: Any?, completion: @escaping (PasswordExtensionResponse) -> Void) {
+        if !isSystemAppExtensionAPIAvailable() {
+            print("Failed to change password for login, system API is not available")
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
+            }
+        }
         
+        if #available(iOS 8, *) {
+            var item: [String: Any] = loginDetails.dictionaryRepresentation()
+            if let generatedPasswordOptions = generatedPasswordOptions?.dictionaryRepresentation() {
+                item[PasswordExtensionLogin.generatedPasswordOptions.key()] = generatedPasswordOptions
+            }
+            
+            presentActivityViewController(for: item, viewController: viewController, sender: sender, typeIdentifier: PasswordExtensionActions.changePassword.path(), completion: completion)
+        }
+        else {
+            print("Failed to find login, system API is not available")
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
+            }
+        }
     }
     
     /*!
@@ -282,6 +228,20 @@ extension PasswordExtension {
 }
 
 extension PasswordExtension {
+    func presentActivityViewController(for item: [String: Any], viewController: UIViewController, sender: Any?, typeIdentifier: String, completion: @escaping (PasswordExtensionResponse) -> Void) {
+        guard let activityVC = activityViewController(for: item, sender: sender, typeIdentifier: typeIdentifier, completion: { [unowned self] (activityType, completed, items, error) in
+            self.handleActivityViewControllerCompletion(activityType: activityType, completed: completed, items: items, error: error, completion: completion)
+        })
+            else {
+                print("Failed to find login, system API is not available")
+                self.callOnMainThread { [unowned self] () in
+                    completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
+                }
+                return
+        }
+        viewController.present(activityVC, animated: true, completion: nil)
+    }
+    
     func activityViewController(for item: [String: Any], sender: Any?, typeIdentifier: String, completion: @escaping (UIActivityType?, Bool, [Any]?, Error?) -> Void) -> UIActivityViewController? {
         let itemProvider = NSItemProvider(item: item as NSSecureCoding, typeIdentifier: typeIdentifier)
         
@@ -301,10 +261,42 @@ extension PasswordExtension {
         activityViewController.completionWithItemsHandler = completion
         return activityViewController
     }
+    
+    func handleActivityViewControllerCompletion(activityType: UIActivityType?, completed: Bool, items: [Any]?, error: Error?, completion: @escaping (PasswordExtensionResponse) -> Void) {
+        if let error = error {
+            print("Failed to contact extension: \(error)")
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.failedToContactExtensionError(with: error)))
+            }
+            return
+        }
+        
+        guard let items = items else {
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.failedToContactExtensionError(with: nil)))
+            }
+            return
+        }
+        
+        if items.count == 0 {
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.extensionCancelledByUserError()))
+            }
+            return
+        }
+        
+        guard let firstItem = items[0] as? NSExtensionItem else {
+            self.callOnMainThread { [unowned self] () in
+                completion(.error(error: self.failedToContactExtensionError(with: nil)))
+            }
+            return
+        }
+        self.processExtensionItem(item: firstItem, completion: completion)
+    }
 }
 
 extension PasswordExtension {
-    func processExtensionItem(item: NSExtensionItem, responseType: PasswordExtensionResponseType, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func processExtensionItem(item: NSExtensionItem, completion: @escaping (PasswordExtensionResponse) -> Void) {
         guard let attachements = item.attachments else {
             self.callOnMainThread { [unowned self] () in
                 completion(.error(error: self.failedToContactExtensionError(with: nil)))
@@ -343,11 +335,7 @@ extension PasswordExtension {
             }
             
             self.callOnMainThread {
-                if responseType == .dictionary {
-                    completion(.successWithLoginDetailsDict(dict: loginDict))
-                } else {
-                    completion(.successWithLoginDetails(model: PasswordExtensionLoginDetails(with: loginDict)))
-                }
+                completion(.loginSuccess(loginDetails: PasswordExtensionLoginDetails(with: loginDict)))
             }
         }
     }

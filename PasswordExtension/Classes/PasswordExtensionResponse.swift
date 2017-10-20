@@ -8,8 +8,7 @@
 import Foundation
 
 public enum PasswordExtensionResponse {
-    case successWithLoginDetails(model: PasswordExtensionLoginDetails)
-    case successWithLoginDetailsDict(dict: [String: Any])
+    case loginSuccess(loginDetails: PasswordExtensionLoginDetails)
     case success(success: Bool)
     case error(error: Error)
 }
@@ -25,7 +24,7 @@ public struct PasswordExtensionLoginDetails {
     public var username: String
     public var password: String
     public var oldPassword: String?
-    public var title: String
+    public var title: String?
     public var notes: String?
     public var sectionTitle: String?
     public var fields: [String: Any]?
@@ -37,7 +36,7 @@ public struct PasswordExtensionLoginDetails {
         username = loginDict[PasswordExtensionLogin.username.key()] as? String ?? ""
         password = loginDict[PasswordExtensionLogin.password.key()] as? String ?? ""
         oldPassword = loginDict[PasswordExtensionLogin.oldPassword.key()] as? String
-        title = loginDict[PasswordExtensionLogin.title.key()] as? String ?? ""
+        title = loginDict[PasswordExtensionLogin.title.key()] as? String
         notes = loginDict[PasswordExtensionLogin.notes.key()] as? String
         sectionTitle = loginDict[PasswordExtensionLogin.sectionTitle.key()] as? String
         fields = loginDict[PasswordExtensionLogin.fields.key()] as? [String: Any]
@@ -45,7 +44,7 @@ public struct PasswordExtensionLoginDetails {
         generatedPasswordOptions = loginDict[PasswordExtensionLogin.generatedPasswordOptions.key()] as? PasswordExtensionGeneratedPasswordOptions
     }
     
-    public init(urlString: String, username: String, password: String, oldPassword: String? = nil, title: String, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions? = nil) {
+    public init(urlString: String, username: String, password: String, oldPassword: String? = nil, title: String? = nil, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions? = nil) {
         self.urlString = urlString
         self.username = username
         self.password = password

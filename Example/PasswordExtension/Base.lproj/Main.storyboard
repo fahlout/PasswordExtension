@@ -35,13 +35,22 @@
                                     <action selector="didTapSaveNewLogin:" destination="VkF-gS-lYW" eventType="touchUpInside" id="XPM-DR-Tfx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e4O-eZ-xPj">
+                                <rect key="frame" x="126" y="198" width="123" height="30"/>
+                                <state key="normal" title="Change Password"/>
+                                <connections>
+                                    <action selector="didTapChangePassword:" destination="VkF-gS-lYW" eventType="touchUpInside" id="zZE-Fe-l6V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="e4O-eZ-xPj" firstAttribute="top" secondItem="ezj-rI-YTa" secondAttribute="bottom" constant="37" id="0bn-A9-Mn5"/>
                             <constraint firstItem="ezj-rI-YTa" firstAttribute="centerX" secondItem="1pL-nI-gAl" secondAttribute="centerX" id="9SE-VY-jxU"/>
                             <constraint firstItem="ezj-rI-YTa" firstAttribute="top" secondItem="5vJ-2M-6I0" secondAttribute="bottom" constant="41" id="QBS-X3-h97"/>
                             <constraint firstItem="5vJ-2M-6I0" firstAttribute="top" secondItem="6uo-wd-7H8" secondAttribute="bottom" constant="40" id="R20-KX-CfX"/>
                             <constraint firstItem="5vJ-2M-6I0" firstAttribute="centerX" secondItem="1pL-nI-gAl" secondAttribute="centerX" id="aA0-EB-Q3T"/>
+                            <constraint firstItem="e4O-eZ-xPj" firstAttribute="centerX" secondItem="1pL-nI-gAl" secondAttribute="centerX" id="yCw-xJ-OqE"/>
                         </constraints>
                     </view>
                 </viewController>

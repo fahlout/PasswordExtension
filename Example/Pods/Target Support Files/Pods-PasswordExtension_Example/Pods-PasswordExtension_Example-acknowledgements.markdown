@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## PasswordExtension
 
-Copyright (c) 2017 Niklas Fahl <niklas.fahl@ua.edu>
+Copyright (c) 2017 Niklas Fahl <niklas.fahl@icloud.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

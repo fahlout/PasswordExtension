@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     @IBAction func didTapGetPassword(_ sender: Any) {
         PasswordExtension.shared.findLogin(for: "https://test.com", viewController: self, sender: nil) { (response) in
             switch response {
-            case let .successWithLoginDetails(loginDetails):
-                print("Title: \(loginDetails.title)")
+            case let .loginSuccess(loginDetails):
+                print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Password: \(loginDetails.password)")
                 print("URL: \(loginDetails.urlString)")
@@ -49,9 +49,29 @@ class ViewController: UIViewController {
         
         PasswordExtension.shared.storeLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
             switch response {
-            case let .successWithLoginDetails(loginDetails):
-                print("Title: \(loginDetails.title)")
+            case let .loginSuccess(loginDetails):
+                print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
+                print("Password: \(loginDetails.password)")
+                print("URL: \(loginDetails.urlString)")
+            case let .error(error):
+                print("Error: \(error)")
+            default:
+                return
+            }
+        }
+    }
+    
+    @IBAction func didTapChangePassword(_ sender: Any) {
+        let loginDetails = PasswordExtensionLoginDetails(urlString: "https://test.com", username: "tester1337", password: "test4231", oldPassword: "test1234", notes: "Saved with PasswordExtension")
+        let generatedPasswordOptions = PasswordExtensionGeneratedPasswordOptions(minLength: 5, maxLength: 45)
+        
+        PasswordExtension.shared.changePasswordForLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
+            switch response {
+            case let .loginSuccess(loginDetails):
+                print("Title: \(loginDetails.title ?? "")")
+                print("Username: \(loginDetails.username)")
+                print("Old Password: \(loginDetails.oldPassword ?? "")")
                 print("Password: \(loginDetails.password)")
                 print("URL: \(loginDetails.urlString)")
             case let .error(error):
