@@ -22,7 +22,7 @@ public class PasswordExtension {
      that can use it. Of course, you could leave the button enabled and educate users about the virtues of strong, unique
      passwords instead :)
      
-     Note that this returns YES if any app that supports the generic `org-appextension-feature-password-management` feature
+     Note that this returns true if any app that supports the generic `org-appextension-feature-password-management` feature
      is installed.
      */
     public func isAvailable() -> Bool {
