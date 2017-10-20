@@ -25,7 +25,7 @@ public class PasswordExtension {
      Note that this returns YES if any app that supports the generic `org-appextension-feature-password-management` feature
      is installed.
      */
-    func isAvailable() -> Bool {
+    public func isAvailable() -> Bool {
         guard let extensionUrl = URL(string: extensionPath) else { return false }
         return UIApplication.shared.canOpenURL(extensionUrl)
     }
