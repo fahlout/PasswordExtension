@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBAction func didTapGetPassword(_ sender: Any) {
         PasswordExtension.shared.findLogin(for: "https://test.com", viewController: self, sender: nil) { (response) in
             switch response {
-            case let .loginSuccess(loginDetails):
+            case let .loginSuccess(loginDetails, _):
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Password: \(loginDetails.password)")
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         
         PasswordExtension.shared.storeLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
             switch response {
-            case let .loginSuccess(loginDetails):
+            case let .loginSuccess(loginDetails, _):
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Password: \(loginDetails.password)")
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         
         PasswordExtension.shared.changePasswordForLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
             switch response {
-            case let .loginSuccess(loginDetails):
+            case let .loginSuccess(loginDetails, _):
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Old Password: \(loginDetails.oldPassword ?? "")")
