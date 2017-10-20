@@ -1,6 +1,5 @@
 # PasswordExtension
 
-[![CI Status](http://img.shields.io/travis/Niklas Fahl/PasswordExtension.svg?style=flat)](https://travis-ci.org/Niklas Fahl/PasswordExtension)
 [![Version](https://img.shields.io/cocoapods/v/PasswordExtension.svg?style=flat)](http://cocoapods.org/pods/PasswordExtension)
 [![License](https://img.shields.io/cocoapods/l/PasswordExtension.svg?style=flat)](http://cocoapods.org/pods/PasswordExtension)
 [![Platform](https://img.shields.io/cocoapods/p/PasswordExtension.svg?style=flat)](http://cocoapods.org/pods/PasswordExtension)
@@ -22,7 +21,7 @@ pod 'PasswordExtension'
 
 ## Author
 
-Niklas Fahl, niklas.fahl@ua.edu
+Niklas Fahl, niklas.fahl@me.com
 
 ## License
 
