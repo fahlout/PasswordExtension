@@ -6,6 +6,8 @@
 
 Rewritten version of [one-password-app-extension by AgileBits](https://github.com/agilebits/onepassword-app-extension) in Swift 4
 
+PasswordExtension lets you give users access to their third party password manager conforming to the PasswordExtension url scheme (i.e. 1Password, LastPass) to fill in their login credentials from their vault, add credentials to their vault, and change their password in their vault for any given url.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
