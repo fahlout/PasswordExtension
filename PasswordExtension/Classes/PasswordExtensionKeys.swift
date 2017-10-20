@@ -54,7 +54,7 @@ enum PasswordExtensionWebViewPage: String {
 }
 
 // MARK: - Errors Codes
-let errorDomain = "GenericPasswordExtension"
+let errorDomain = "PasswordExtension"
 
 enum PasswordExtensionError: Int {
     case cancelledByUser = 0

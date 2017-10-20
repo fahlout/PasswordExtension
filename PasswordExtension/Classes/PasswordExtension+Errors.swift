@@ -14,12 +14,12 @@ extension PasswordExtension {
     }
     
     func extensionCancelledByUserError() -> Error {
-        let userInfo = [NSLocalizedDescriptionKey: "GenericPassword Extension was cancelled by the user"]
+        let userInfo = [NSLocalizedDescriptionKey: "PasswordExtension was cancelled by the user"]
         return NSError(domain: errorDomain, code: PasswordExtensionError.cancelledByUser.code(), userInfo: userInfo)
     }
     
     func failedToContactExtensionError(with activityError: Error?) -> Error {
-        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: "Failed to contact the GenericPassword Extension"]
+        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: "Failed to contact the password extension"]
         if activityError != nil {
             userInfo[NSUnderlyingErrorKey] = activityError
         }
@@ -32,7 +32,7 @@ extension PasswordExtension {
     }
     
     func failedToLoadItemProviderDataError(with underlyingError: Error?) -> Error {
-        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: "Failed to parse information returned by GenericPassword Extension"]
+        var userInfo: [String: Any] = [NSLocalizedDescriptionKey: "Failed to parse information returned by password extension"]
         if underlyingError != nil {
             userInfo[NSUnderlyingErrorKey] = underlyingError
         }
@@ -48,7 +48,7 @@ extension PasswordExtension {
     }
     
     func failedToObtainURLStringFromWebViewError() -> Error {
-        let userInfo = [NSLocalizedDescriptionKey: "Failed to obtain URL String from web view. The web view must be loaded completely when calling the GenericPassword Extension"]
+        let userInfo = [NSLocalizedDescriptionKey: "Failed to obtain URL String from web view. The web view must be loaded completely when calling the password extension"]
         return NSError(domain: errorDomain, code: PasswordExtensionError.failedToObtainURLStringFromWebView.code(), userInfo: userInfo)
     }
     
