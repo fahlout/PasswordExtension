@@ -17,7 +17,7 @@ import Foundation
 public struct PELoginDetails {
     public var urlString: String
     public var username: String
-    public var password: String
+    public var password: String?
     public var oldPassword: String?
     public var title: String?
     public var notes: String?
@@ -39,7 +39,7 @@ public struct PELoginDetails {
         generatedPasswordOptions = loginDict[PELogin.generatedPasswordOptions.key()] as? PEGeneratedPasswordOptions
     }
     
-    public init(urlString: String, username: String, password: String, oldPassword: String? = nil, title: String? = nil, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PEGeneratedPasswordOptions? = nil) {
+    public init(urlString: String, username: String, password: String? = nil, oldPassword: String? = nil, title: String? = nil, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PEGeneratedPasswordOptions? = nil) {
         self.urlString = urlString
         self.username = username
         self.password = password
