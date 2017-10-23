@@ -9,24 +9,27 @@ import Foundation
 import MobileCoreServices
 
 extension PasswordExtension {
-    func processExtensionItem(item: NSExtensionItem, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func processExtensionItem(item: NSExtensionItem, completion: @escaping ((loginDetails: PELoginDetails, loginDict: [String: Any])?, _ error: PEError?) -> Void) {
         guard let attachements = item.attachments else {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToContactExtensionError(with: nil)))
+                let error = self.failedToContactExtensionError(with: nil)
+                completion(nil, error)
             }
             return
         }
         
         if attachements.count == 0 {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item had no attachments.")))
+                let error = self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item had no attachments.")
+                completion(nil, error)
             }
             return
         }
         
         guard let itemProvider = attachements[0] as? NSItemProvider else {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item had no attachments.")))
+                let error = self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item had no attachments.")
+                completion(nil, error)
             }
             return
         }
@@ -34,7 +37,8 @@ extension PasswordExtension {
         let propertyListKey = kUTTypePropertyList as String
         if !itemProvider.hasItemConformingToTypeIdentifier(propertyListKey) {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item attachment does not conform to kUTTypePropertyList type identifier")))
+                let error = self.unexpectedDataError(with: "Unexpected data returned by App Extension: extension item attachment does not conform to kUTTypePropertyList type identifier")
+                completion(nil, error)
             }
             return
         }
@@ -42,13 +46,15 @@ extension PasswordExtension {
         itemProvider.loadItem(forTypeIdentifier: propertyListKey, options: nil) { [unowned self] (loginDict, error) in
             guard let loginDict = loginDict as? [String: Any] else {
                 self.callOnMainThread { [unowned self] () in
-                    completion(.error(error: self.failedToLoadItemProviderDataError(with: error)))
+                    let error = self.failedToLoadItemProviderDataError(with: error)
+                    completion(nil, error)
                 }
                 return
             }
             
             self.callOnMainThread {
-                completion(.loginSuccess(loginDetails: PasswordExtensionLoginDetails(with: loginDict), loginDict: loginDict))
+                let loginDetails = PELoginDetails(with: loginDict)
+                completion((loginDetails, loginDict), nil)
             }
         }
     }

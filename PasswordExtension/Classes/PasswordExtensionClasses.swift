@@ -14,7 +14,7 @@ import Foundation
  
  Note: Not all fields are supported by every password manager
  */
-public struct PasswordExtensionLoginDetails {
+public struct PELoginDetails {
     public var urlString: String
     public var username: String
     public var password: String
@@ -24,22 +24,22 @@ public struct PasswordExtensionLoginDetails {
     public var sectionTitle: String?
     public var fields: [String: Any]?
     public var returnedFields: [String: Any]?
-    public var generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions?
+    public var generatedPasswordOptions: PEGeneratedPasswordOptions?
     
     public init(with loginDict: [String: Any]) {
-        urlString = loginDict[PasswordExtensionLogin.urlString.key()] as? String ?? ""
-        username = loginDict[PasswordExtensionLogin.username.key()] as? String ?? ""
-        password = loginDict[PasswordExtensionLogin.password.key()] as? String ?? ""
-        oldPassword = loginDict[PasswordExtensionLogin.oldPassword.key()] as? String
-        title = loginDict[PasswordExtensionLogin.title.key()] as? String
-        notes = loginDict[PasswordExtensionLogin.notes.key()] as? String
-        sectionTitle = loginDict[PasswordExtensionLogin.sectionTitle.key()] as? String
-        fields = loginDict[PasswordExtensionLogin.fields.key()] as? [String: Any]
-        returnedFields = loginDict[PasswordExtensionLogin.returnedFields.key()] as? [String: Any]
-        generatedPasswordOptions = loginDict[PasswordExtensionLogin.generatedPasswordOptions.key()] as? PasswordExtensionGeneratedPasswordOptions
+        urlString = loginDict[PELogin.urlString.key()] as? String ?? ""
+        username = loginDict[PELogin.username.key()] as? String ?? ""
+        password = loginDict[PELogin.password.key()] as? String ?? ""
+        oldPassword = loginDict[PELogin.oldPassword.key()] as? String
+        title = loginDict[PELogin.title.key()] as? String
+        notes = loginDict[PELogin.notes.key()] as? String
+        sectionTitle = loginDict[PELogin.sectionTitle.key()] as? String
+        fields = loginDict[PELogin.fields.key()] as? [String: Any]
+        returnedFields = loginDict[PELogin.returnedFields.key()] as? [String: Any]
+        generatedPasswordOptions = loginDict[PELogin.generatedPasswordOptions.key()] as? PEGeneratedPasswordOptions
     }
     
-    public init(urlString: String, username: String, password: String, oldPassword: String? = nil, title: String? = nil, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PasswordExtensionGeneratedPasswordOptions? = nil) {
+    public init(urlString: String, username: String, password: String, oldPassword: String? = nil, title: String? = nil, notes: String? = nil, sectionTitle: String? = nil, fields: [String: Any]? = nil, returnedFields: [String: Any]? = nil, generatedPasswordOptions: PEGeneratedPasswordOptions? = nil) {
         self.urlString = urlString
         self.username = username
         self.password = password
@@ -54,27 +54,27 @@ public struct PasswordExtensionLoginDetails {
     
     func dictionaryRepresentation() -> [String: Any] {
         var loginDict: [String: Any] = [:]
-        loginDict[PasswordExtensionLogin.urlString.key()] = urlString
-        loginDict[PasswordExtensionLogin.username.key()] = username
-        loginDict[PasswordExtensionLogin.password.key()] = password
-        loginDict[PasswordExtensionLogin.title.key()] = title
+        loginDict[PELogin.urlString.key()] = urlString
+        loginDict[PELogin.username.key()] = username
+        loginDict[PELogin.password.key()] = password
+        loginDict[PELogin.title.key()] = title
         if let oldPassword = oldPassword {
-            loginDict[PasswordExtensionLogin.oldPassword.key()] = oldPassword
+            loginDict[PELogin.oldPassword.key()] = oldPassword
         }
         if let notes = notes {
-            loginDict[PasswordExtensionLogin.notes.key()] = notes
+            loginDict[PELogin.notes.key()] = notes
         }
         if let sectionTitle = sectionTitle {
-            loginDict[PasswordExtensionLogin.sectionTitle.key()] = sectionTitle
+            loginDict[PELogin.sectionTitle.key()] = sectionTitle
         }
         if let fields = fields {
-            loginDict[PasswordExtensionLogin.fields.key()] = fields
+            loginDict[PELogin.fields.key()] = fields
         }
         if let returnedFields = returnedFields {
-            loginDict[PasswordExtensionLogin.returnedFields.key()] = returnedFields
+            loginDict[PELogin.returnedFields.key()] = returnedFields
         }
         if let generatedPasswordOptions = generatedPasswordOptions {
-            loginDict[PasswordExtensionLogin.generatedPasswordOptions.key()] = generatedPasswordOptions
+            loginDict[PELogin.generatedPasswordOptions.key()] = generatedPasswordOptions
         }
         return loginDict
     }
@@ -85,7 +85,7 @@ public struct PasswordExtensionLoginDetails {
 /**
  Options to be passed to password manager for password generation.
  */
-public struct PasswordExtensionGeneratedPasswordOptions {
+public struct PEGeneratedPasswordOptions {
     public var minLength: Int
     public var maxLength: Int
     
@@ -96,8 +96,8 @@ public struct PasswordExtensionGeneratedPasswordOptions {
     
     func dictionaryRepresentation() -> [String: Any] {
         var generatedPasswordOptionsDict: [String: Any] = [:]
-        generatedPasswordOptionsDict[PasswordExtensionGeneratedPassword.minLength.key()] = minLength
-        generatedPasswordOptionsDict[PasswordExtensionGeneratedPassword.maxLength.key()] = maxLength
+        generatedPasswordOptionsDict[PEGeneratedPassword.minLength.key()] = minLength
+        generatedPasswordOptionsDict[PEGeneratedPassword.maxLength.key()] = maxLength
         return generatedPasswordOptionsDict
     }
 }

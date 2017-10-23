@@ -8,14 +8,15 @@
 import Foundation
 
 extension PasswordExtension {
-    func presentActivityViewController(for item: [String: Any], viewController: UIViewController, sender: Any?, typeIdentifier: String, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func presentActivityViewController(for item: [String: Any], viewController: UIViewController, sender: Any?, typeIdentifier: String, completion: @escaping ((loginDetails: PELoginDetails, loginDict: [String: Any])?, _ error: PEError?) -> Void) {
         guard let activityVC = activityViewController(for: item, sender: sender, typeIdentifier: typeIdentifier, completion: { [unowned self] (activityType, completed, items, error) in
             self.handleActivityViewControllerCompletion(activityType: activityType, completed: completed, items: items, error: error, completion: completion)
         })
             else {
                 print("Failed to find login, system API is not available")
                 self.callOnMainThread { [unowned self] () in
-                    completion(.error(error: self.systemAppExtensionAPINotAvailableError()))
+                    let error = self.systemAppExtensionAPINotAvailableError()
+                    completion(nil, error)
                 }
                 return
         }
@@ -42,32 +43,36 @@ extension PasswordExtension {
         return activityViewController
     }
     
-    func handleActivityViewControllerCompletion(activityType: UIActivityType?, completed: Bool, items: [Any]?, error: Error?, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func handleActivityViewControllerCompletion(activityType: UIActivityType?, completed: Bool, items: [Any]?, error: Error?, completion: @escaping ((loginDetails: PELoginDetails, loginDict: [String: Any])?, _ error: PEError?) -> Void) {
         if let error = error {
             print("Failed to contact extension: \(error)")
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToContactExtensionError(with: error)))
+                let error = self.failedToContactExtensionError(with: error)
+                completion(nil, error)
             }
             return
         }
         
         guard let items = items else {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToContactExtensionError(with: nil)))
+                let error = self.extensionCancelledByUserError()
+                completion(nil, error)
             }
             return
         }
         
         if items.count == 0 {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.extensionCancelledByUserError()))
+                let error = self.failedToContactExtensionError(with: nil)
+                completion(nil, error)
             }
             return
         }
         
         guard let firstItem = items[0] as? NSExtensionItem else {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToContactExtensionError(with: nil)))
+                let error = self.failedToContactExtensionError(with: nil)
+                completion(nil, error)
             }
             return
         }

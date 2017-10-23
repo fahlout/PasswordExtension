@@ -24,17 +24,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func didTapGetPassword(_ sender: Any) {
-        PasswordExtension.shared.findLogin(for: "https://test.com", viewController: self, sender: nil) { (response) in
-            switch response {
-            case let .loginSuccess(loginDetails, _):
+        PasswordExtension.shared.findLoginDetails(for: "https://test.com", viewController: self, sender: nil) { (loginDetails, error) in
+            if let loginDetails = loginDetails {
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Password: \(loginDetails.password)")
                 print("URL: \(loginDetails.urlString)")
-            case let .error(error):
-                print("Error: \(error)")
-            default:
-                return
+            } else if let error = error {
+                switch error.code {
+                case .extensionCancelledByUser:
+                    print(error.localizedDescription)
+                default:
+                    print("Error: \(error)")
+                }
             }
         }
     }
@@ -44,40 +46,34 @@ class ViewController: UIViewController {
             "firstname": "Tim",
             "lastname": "Tester"
         ]
-        let loginDetails = PasswordExtensionLoginDetails(urlString: "https://test.com", username: "tester1337", password: "test1234", title: "Test App", notes: "Saved with PasswordExtension", fields: fields)
-        let generatedPasswordOptions = PasswordExtensionGeneratedPasswordOptions(minLength: 5, maxLength: 45)
+        let loginDetails = PELoginDetails(urlString: "https://test.com", username: "tester1337", password: "test1234", title: "Test App", notes: "Saved with PasswordExtension", fields: fields)
+        let generatedPasswordOptions = PEGeneratedPasswordOptions(minLength: 5, maxLength: 45)
         
-        PasswordExtension.shared.storeLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
-            switch response {
-            case let .loginSuccess(loginDetails, _):
+        PasswordExtension.shared.storeLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (loginDetails, error) in
+            if let loginDetails = loginDetails {
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Password: \(loginDetails.password)")
                 print("URL: \(loginDetails.urlString)")
-            case let .error(error):
+            } else if let error = error {
                 print("Error: \(error)")
-            default:
-                return
             }
         }
     }
     
     @IBAction func didTapChangePassword(_ sender: Any) {
-        let loginDetails = PasswordExtensionLoginDetails(urlString: "https://test.com", username: "tester1337", password: "test4231", oldPassword: "test1234", notes: "Saved with PasswordExtension")
-        let generatedPasswordOptions = PasswordExtensionGeneratedPasswordOptions(minLength: 5, maxLength: 45)
+        let loginDetails = PELoginDetails(urlString: "https://test.com", username: "tester1337", password: "test4231", oldPassword: "test1234", notes: "Saved with PasswordExtension")
+        let generatedPasswordOptions = PEGeneratedPasswordOptions(minLength: 5, maxLength: 45)
         
-        PasswordExtension.shared.changePasswordForLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (response) in
-            switch response {
-            case let .loginSuccess(loginDetails, _):
+        PasswordExtension.shared.changePasswordForLogin(for: loginDetails, generatedPasswordOptions: generatedPasswordOptions, viewController: self, sender: nil) { (loginDetails, error) in
+            if let loginDetails = loginDetails {
                 print("Title: \(loginDetails.title ?? "")")
                 print("Username: \(loginDetails.username)")
                 print("Old Password: \(loginDetails.oldPassword ?? "")")
                 print("Password: \(loginDetails.password)")
                 print("URL: \(loginDetails.urlString)")
-            case let .error(error):
+            } else if let error = error {
                 print("Error: \(error)")
-            default:
-                return
             }
         }
     }

@@ -12,7 +12,7 @@ import Foundation
 /**
  Keys to retrieve login details from extension response or to set login details in a dictionary.
  */
-public enum PasswordExtensionLogin: String {
+public enum PELogin: String {
     case urlString = "url_string"
     case username = "username"
     case password = "password"
@@ -34,7 +34,7 @@ public enum PasswordExtensionLogin: String {
 /**
  Keys to retrieve or set password generation options in a dictionary.
  */
-public enum PasswordExtensionGeneratedPassword: String {
+public enum PEGeneratedPassword: String {
     case minLength = "password_min_length"
     case maxLength = "password_max_length"
     
@@ -44,7 +44,7 @@ public enum PasswordExtensionGeneratedPassword: String {
 }
 
 // MARK: - WebView Dictionary Keys
-enum PasswordExtensionWebViewPage: String {
+enum PEWebViewPage: String {
     case fillScript = "fillScript"
     case details = "pageDetails"
     
@@ -53,26 +53,8 @@ enum PasswordExtensionWebViewPage: String {
     }
 }
 
-// MARK: - Errors Codes
-let errorDomain = "PasswordExtension"
-
-enum PasswordExtensionError: Int {
-    case cancelledByUser = 0
-    case apiNotAvailable = 1
-    case failedToContactExtension = 2
-    case failedToLoadItemProviderData = 3
-    case collectFieldsScriptFailed = 4
-    case fillFieldsScriptFailed = 5
-    case unexpectedData = 6
-    case failedToObtainURLStringFromWebView = 7
-    
-    func code() -> Int {
-        return self.rawValue
-    }
-}
-
 // MARK: - Available App Extension Actions
-enum PasswordExtensionActions: String {
+enum PEActions: String {
     case findLogin = "org.appextension.find-login-action"
     case saveLogin = "org.appextension.save-login-action"
     case changePassword = "org.appextension.change-password-action"

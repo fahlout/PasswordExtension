@@ -9,46 +9,49 @@ import Foundation
 import WebKit
 
 extension PasswordExtension {
-    func findLoginForWebView(with urlString: String, collectedPageDetails: String, webViewController: UIViewController, sender: Any?, webView: WKWebView, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func findLoginForWebView(with urlString: String, collectedPageDetails: String, webViewController: UIViewController, sender: Any?, webView: WKWebView, completion: @escaping (_ success: Bool, _ error: PEError?) -> Void) {
         if urlString.count == 0 {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToObtainURLStringFromWebViewError()))
+                let error = self.failedToObtainURLStringFromWebViewError()
+                completion(false, error)
             }
         }
         
-        let item = [PasswordExtensionLogin.urlString.key(): urlString, PasswordExtensionWebViewPage.details.key(): collectedPageDetails]
+        let item = [PELogin.urlString.key(): urlString, PEWebViewPage.details.key(): collectedPageDetails]
         
-        presentActivityViewController(for: item, viewController: webViewController, sender: sender, typeIdentifier: PasswordExtensionActions.fillWebView.path()) { [unowned self] (response) in
-            if case let .loginSuccess(_, loginDict) = response {
-                let fillScript = loginDict[PasswordExtensionWebViewPage.fillScript.key()] as? String
-                self.executeFillScript(fillScript: fillScript, in: webView, completion: completion)
-            } else {
+        presentActivityViewController(for: item, viewController: webViewController, sender: sender, typeIdentifier: PEActions.fillWebView.path()) { [unowned self] (response, error) in
+            if let error = error {
                 self.callOnMainThread {
-                    completion(response)
+                    completion(false, error)
                 }
+            } else if let response = response {
+                let fillScript = response.loginDict[PEWebViewPage.fillScript.key()] as? String
+                self.executeFillScript(fillScript: fillScript, in: webView, completion: completion)
             }
         }
     }
     
-    func executeFillScript(fillScript: String?, in webView: WKWebView, completion: @escaping (PasswordExtensionResponse) -> Void) {
+    func executeFillScript(fillScript: String?, in webView: WKWebView, completion: @escaping (_ success: Bool, _ error: PEError?) -> Void) {
         guard let fillScript = fillScript else {
             self.callOnMainThread { [unowned self] () in
-                completion(.error(error: self.failedToFillFieldsError(with: "Failed to fill web page because script could not be evaluated", underlyingError: nil)))
+                let error = self.failedToFillFieldsError(with: "Failed to fill web page because script could not be evaluated", underlyingError: nil)
+                completion(false, error)
             }
             return
         }
         
-        let scriptSource = "('\(fillScript)');"
+        let scriptSource = "\(PasswordExtension.webViewFillScript)('\(fillScript)');"
         
         webView.evaluateJavaScript(scriptSource) { (result, error) in
             guard ((result as? String) != nil) else {
                 self.callOnMainThread { [unowned self] () in
-                    completion(.error(error: self.failedToFillFieldsError(with: "Failed to fill web page because script could not be evaluated", underlyingError: error)))
+                    let error = self.failedToFillFieldsError(with: "Failed to fill web page because script could not be evaluated", underlyingError: error)
+                    completion(false, error)
                 }
                 return
             }
             
-            completion(.success(success: true))
+            completion(true, nil)
         }
     }
 }
