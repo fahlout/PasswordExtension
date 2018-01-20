@@ -19,11 +19,18 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-PasswordExtension is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+PasswordExtension is available through:
+
+### [CocoaPods](http://cocoapods.org)
+To install it, simply add the following line to your `Podfile`:
 
 ```ruby
 pod 'PasswordExtension'
+```
+### [Carthage](https://github.com/Carthage/Carthage)
+To install it, simply it add the following to your `Cartfile`:
+```
+github "fahlout/PasswordExtension"
 ```
 
 ## Manual Installation
@@ -47,7 +54,7 @@ Just add a button with an appropriate icon (i.e. the 1Password icon) to your app
 
 <img src="https://github.com/fahlout/PasswordExtension/raw/master/Resources/LoginScreen.png" width="320">
 
-***NOTE: Not every field in PasswordExtensionLoginDetails may be supported in every password manager. PasswordExtensionGeneratedPasswordOptions also may or may not be supported depending on the password manager.***
+***NOTE: Not every field in PasswordExtensionLoginDetails may be supported in every password manager. PEGeneratedPasswordOptions also may or may not be supported depending on the password manager.***
 
 ## Example Code
 
