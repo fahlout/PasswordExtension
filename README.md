@@ -28,7 +28,7 @@ To install it, simply add the following line to your `Podfile`:
 pod 'PasswordExtension'
 ```
 ### [Carthage](https://github.com/Carthage/Carthage)
-To install it, simply it add the following to your `Cartfile`:
+To install it, simply add the following to your `Cartfile`:
 ```
 github "fahlout/PasswordExtension"
 ```
