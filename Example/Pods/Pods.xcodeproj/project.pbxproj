@@ -39,15 +39,15 @@
 /* Begin PBXFileReference section */
 		084024E549F18987BE3BA7AD15A77688 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACC072334CF70439ACF05F1DE60B560 /* Pods-PasswordExtension_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PasswordExtension_Tests-umbrella.h"; sourceTree = "<group>"; };
-		16DA1656C5C98ECAF3F2620751636E07 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		16DA1656C5C98ECAF3F2620751636E07 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		19B2D3763D59937A83D5306D9E7A1FDD /* Pods-PasswordExtension_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PasswordExtension_Example-frameworks.sh"; sourceTree = "<group>"; };
-		19E8BAFE86A79937A6269B5993309683 /* Pods_PasswordExtension_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PasswordExtension_Example.framework; path = "Pods-PasswordExtension_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19E8BAFE86A79937A6269B5993309683 /* Pods_PasswordExtension_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordExtension_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27177EDC58314DCDD9130B8AC5B8013D /* Pods-PasswordExtension_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PasswordExtension_Example.release.xcconfig"; sourceTree = "<group>"; };
 		2B90902144957BF79896A0E4FA0909AA /* PasswordExtension.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PasswordExtension.xcconfig; sourceTree = "<group>"; };
 		2F7E9242C7593DCF7E2EAA817415CC15 /* PasswordExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PasswordExtension-prefix.pch"; sourceTree = "<group>"; };
-		33A93A15F5881AEC4E570B7EFA01B6ED /* PasswordExtension.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = PasswordExtension.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		33A93A15F5881AEC4E570B7EFA01B6ED /* PasswordExtension.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = PasswordExtension.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		33C4198C813D02835E2BF5780E1E44E2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		47E4A81B6E26BFFEA9124EB2143F1388 /* Pods_PasswordExtension_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PasswordExtension_Tests.framework; path = "Pods-PasswordExtension_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47E4A81B6E26BFFEA9124EB2143F1388 /* Pods_PasswordExtension_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PasswordExtension_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52287FD707C4C1DFEDB38FA08BB373F9 /* Pods-PasswordExtension_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PasswordExtension_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		598FF2865A3655E9AD39FD6678EC46F3 /* PasswordExtension+ProcessItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PasswordExtension+ProcessItem.swift"; path = "PasswordExtension/Classes/PasswordExtension+ProcessItem.swift"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,14 +63,14 @@
 		87EEFEA216C490775CBFA42F0F8B699B /* PasswordExtension+ActivityController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PasswordExtension+ActivityController.swift"; path = "PasswordExtension/Classes/PasswordExtension+ActivityController.swift"; sourceTree = "<group>"; };
 		8B63569C346792893231AEB305BE6292 /* Pods-PasswordExtension_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PasswordExtension_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		8D70B9EA77C13AD37B8D74ABB1F009FC /* Pods-PasswordExtension_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PasswordExtension_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		997B77496FF322A7EB3E01274B9B1D28 /* PasswordExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PasswordExtension.framework; path = PasswordExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		997B77496FF322A7EB3E01274B9B1D28 /* PasswordExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PasswordExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99FF79223BBB9751653982FCFE8900E6 /* PasswordExtension+WebViewIntegration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PasswordExtension+WebViewIntegration.swift"; path = "PasswordExtension/Classes/PasswordExtension+WebViewIntegration.swift"; sourceTree = "<group>"; };
 		9D05A18D0A7166574A5AF154A214A759 /* Pods-PasswordExtension_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PasswordExtension_Tests.modulemap"; sourceTree = "<group>"; };
 		9D660F14FDEDE072A00B51D450FCC96C /* PasswordExtension-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PasswordExtension-umbrella.h"; sourceTree = "<group>"; };
 		B9A7C8B5C9208BDDCD93C676DA4436B1 /* PasswordExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PasswordExtension.swift; path = PasswordExtension/Classes/PasswordExtension.swift; sourceTree = "<group>"; };
 		BF34E029143D3FA27560F1116EF25D63 /* Pods-PasswordExtension_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PasswordExtension_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C29A1ACA7282D8735DA93E55FAEFFB24 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		C29A1ACA7282D8735DA93E55FAEFFB24 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C8503D794A5D32ADEFEC309BACE8C7DE /* PasswordExtensionKeys.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PasswordExtensionKeys.swift; path = PasswordExtension/Classes/PasswordExtensionKeys.swift; sourceTree = "<group>"; };
 		C8C2FAC140E85FCDEE9A3B4EB1B99CDA /* Pods-PasswordExtension_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PasswordExtension_Example-resources.sh"; sourceTree = "<group>"; };
 		D45A9B1C3E7348AA31E8F15D26F48211 /* Pods-PasswordExtension_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PasswordExtension_Example.modulemap"; sourceTree = "<group>"; };
@@ -511,7 +511,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -610,7 +610,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
