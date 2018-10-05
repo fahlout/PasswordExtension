@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PasswordExtension'
-  s.version          = '4.1.0'
+  s.version          = '4.2.0'
   s.summary          = 'Let users use a third party password manager right in your own app.'
 
 # This description is used to generate tags and improve search results.

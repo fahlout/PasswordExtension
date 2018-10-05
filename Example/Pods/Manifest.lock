@@ -1,5 +1,5 @@
 PODS:
-  - PasswordExtension (4.1.0)
+  - PasswordExtension (4.2.0)
 
 DEPENDENCIES:
   - PasswordExtension (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  PasswordExtension: 7641b9c5697f3da84932891e2ca138f1082abae1
+  PasswordExtension: 50c729dcc90cf5f3daefcb08d7e1b1e116342cf8
 
 PODFILE CHECKSUM: d3c7896b2727b62765c2f4615136c691aee7a8f8
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0
