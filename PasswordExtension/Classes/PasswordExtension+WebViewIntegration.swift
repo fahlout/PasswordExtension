@@ -10,7 +10,7 @@ import WebKit
 
 extension PasswordExtension {
     func findLoginForWebView(with urlString: String, collectedPageDetails: String, webViewController: UIViewController, sender: Any?, webView: WKWebView, completion: @escaping (_ success: Bool, _ error: PEError?) -> Void) {
-        if urlString.count == 0 {
+        if urlString.isEmpty {
             self.callOnMainThread { [unowned self] () in
                 let error = self.failedToObtainURLStringFromWebViewError()
                 completion(false, error)

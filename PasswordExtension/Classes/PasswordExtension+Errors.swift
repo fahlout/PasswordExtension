@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 enum PasswordExtensionError: Int {
     case cancelledByUser = 0
     case apiNotAvailable = 1
@@ -18,8 +16,6 @@ enum PasswordExtensionError: Int {
     case fillFieldsScriptFailed = 5
     case unexpectedData = 6
     case failedToObtainURLStringFromWebView = 7
-    
-    
 }
 
 // MARK: - Error
