@@ -33,6 +33,9 @@ To install it, simply add the following to your `Cartfile`:
 github "fahlout/PasswordExtension"
 ```
 
+### Swift Package Manager
+Use GitHub URL (https://github.com/fahlout/PasswordExtension) to integrate with SPM inside Xcode.
+
 ## Manual Installation
 
 Add all swift files in the 'PasswordExtension/Classes' directory to your project and you'll be ready to go.
