@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension PasswordExtension {
     func presentActivityViewController(for item: [String: Any], viewController: UIViewController, sender: Any?, typeIdentifier: String, completion: @escaping ((loginDetails: PELoginDetails, loginDict: [String: Any])?, _ error: PEError?) -> Void) {
